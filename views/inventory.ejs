@@ -1,0 +1,28 @@
+<%- include ('partials/header.ejs') %>
+<table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Size</th>
+        <th>Status</th>
+        <th>ID</th>
+    </tr>
+    </thead>
+    <% elements.forEach( element => { %>
+        <tr>
+            <td> <%= element.item %></td>
+            <td> <%= element.qty %></td>
+            <td> <%= JSON.stringify(element.size) %></td>
+            <td> <%= element.status %></td>
+            <td>
+                <a href="http://localhost:3000/edit/<%= element._id%>">Editar</a>
+                <a href="http://localhost:3000/borrar/<%= element._id%>">Borrar</a>
+            </td>
+            <!--<td> <%= element._id %></td>-->
+        </tr>
+    <% }) %>
+</table>
+<form action="/crear" method="get">
+    <input type="submit" value="Añadir Item">
+</form>
